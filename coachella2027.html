@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coachella 2027 完整行程</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand:#F5EDD8;--terra:#C4603A;--terra-l:#E8845E;--sage:#7A9E7E;
+  --dusk:#2C2118;--gold:#D4A843;--cream:#FBF6EC;--muted:#9B8B7A;
+  --vegas:#6B35A8;--vegas-l:#9B6ED4;
+  --bd:rgba(196,96,58,0.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dusk);min-height:100vh}
+
+.hero{background:var(--dusk);padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(196,96,58,.3) 0%,transparent 65%)}
+.hero-eye{font-size:10px;letter-spacing:.2em;color:var(--gold);font-weight:500;margin-bottom:.5rem;position:relative}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);color:var(--sand);line-height:1.1;position:relative}
+.hero h1 span{color:var(--terra-l)}
+.hero-sub{margin-top:.5rem;color:var(--muted);font-size:13px;position:relative}
+
+.tabs-bar{background:var(--dusk);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.07)}
+.tabs{display:flex;overflow-x:auto;max-width:900px;margin:0 auto;padding:0 1rem;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:.85rem 1.1rem;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;flex-shrink:0}
+.tab.active{color:var(--terra-l);border-bottom-color:var(--terra-l)}
+.tab:hover:not(.active){color:var(--sand)}
+
+.main{max-width:900px;margin:0 auto;padding:1.75rem 1.25rem 4rem}
+.panel{display:none}.panel.active{display:block}
+
+.sec-label{font-size:10px;letter-spacing:.18em;color:var(--terra);font-weight:500;text-transform:uppercase;margin-bottom:1rem}
+
+/* DAY CARDS */
+.day-card{background:#fff;border:1px solid var(--bd);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.day-header{display:grid;grid-template-columns:80px 1fr auto;gap:0;align-items:stretch}
+.day-date{padding:.9rem 1rem;border-right:1px solid var(--bd);text-align:center;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.day-num{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--terra);line-height:1}
+.day-dow{font-size:11px;color:var(--muted)}
+.day-title-wrap{padding:.9rem 1rem;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.day-title{font-size:14px;font-weight:500;color:var(--dusk)}
+.day-subtitle{font-size:12px;color:var(--muted);line-height:1.4}
+.day-badge-wrap{padding:.9rem 1rem;display:flex;align-items:center}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.badge-fest{background:rgba(196,96,58,.13);color:#8B3A1F}
+.badge-travel{background:rgba(212,168,67,.15);color:#7A5500}
+.badge-vegas{background:rgba(107,53,168,.13);color:#4A1F82}
+.badge-uni{background:rgba(122,158,126,.15);color:#2E5C33}
+
+.day-body{border-top:1px solid var(--bd);padding:.85rem 1rem}
+.schedule{display:flex;flex-direction:column;gap:6px}
+.sched-item{display:grid;grid-template-columns:60px 1fr;gap:8px;align-items:start}
+.sched-time{font-size:11px;color:var(--muted);font-weight:500;padding-top:2px;font-variant-numeric:tabular-nums}
+.sched-text{font-size:13px;color:var(--dusk);line-height:1.5}
+.sched-note{font-size:11px;color:var(--muted);margin-top:1px}
+.tip-box{background:rgba(196,96,58,.06);border:1px solid rgba(196,96,58,.15);border-radius:8px;padding:.65rem .9rem;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.5}
+.tip-box strong{color:var(--terra);font-weight:500}
+
+/* CARD GRID */
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem}
+@media(max-width:540px){.card-grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:1rem 1.1rem}
+.card-eye{font-size:11px;color:var(--muted);margin-bottom:5px}
+.card-title{font-size:14px;font-weight:500;color:var(--dusk);margin-bottom:3px}
+.card-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.card-price{font-size:13px;font-weight:500;margin-top:8px;color:var(--dusk)}
+.card-price.ok{color:var(--sage)}
+
+/* BUDGET */
+.budget-wrap{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1.25rem}
+.b-row{display:flex;justify-content:space-between;font-size:14px;padding:.5rem 0;border-bottom:1px solid var(--bd)}
+.b-row:last-child{border-bottom:none}
+.b-label{color:var(--muted)}
+.b-val{font-weight:500;color:var(--dusk)}
+.b-total{display:flex;justify-content:space-between;align-items:baseline;padding:.9rem 0 0;border-top:1.5px solid var(--terra);margin-top:.25rem}
+.b-total-label{font-size:14px;font-weight:500}
+.b-total-num{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--terra)}
+.b-note{font-size:11px;color:var(--muted);text-align:right;margin-top:4px}
+
+/* CHECKLIST */
+.check-section{margin-bottom:1.75rem}
+.check-sec-title{font-size:11px;letter-spacing:.12em;color:var(--terra);text-transform:uppercase;font-weight:500;margin-bottom:.65rem}
+.check-progress{height:4px;background:var(--bd);border-radius:2px;margin-bottom:1.25rem;overflow:hidden}
+.check-bar{height:100%;background:var(--terra);border-radius:2px;transition:width .3s}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:.55rem 0;border-bottom:1px solid var(--bd);cursor:pointer}
+.check-item:last-child{border-bottom:none}
+.c-box{width:18px;height:18px;border-radius:4px;border:1.5px solid var(--bd);background:#fff;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s}
+.c-box.checked{background:var(--terra);border-color:var(--terra)}
+.c-tick{display:none;color:#fff;font-size:11px;font-weight:700}
+.c-box.checked .c-tick{display:block}
+.c-text{font-size:13px;color:var(--dusk);line-height:1.5;transition:color .15s}
+.c-text.done{color:var(--muted);text-decoration:line-through}
+
+/* NOTES */
+.note-add{display:flex;gap:8px;margin-bottom:1rem}
+.note-input{flex:1;padding:.6rem .9rem;border:1px solid var(--bd);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;background:#fff;color:var(--dusk);outline:none}
+.note-input:focus{border-color:var(--terra)}
+.note-btn{padding:.6rem 1rem;background:var(--terra);color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;transition:background .15s}
+.note-btn:hover{background:var(--terra-l)}
+.note-list{display:flex;flex-direction:column;gap:8px}
+.note-card{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:.8rem 1rem;display:flex;align-items:flex-start;gap:8px}
+.note-body{flex:1}
+.note-text{font-size:13px;color:var(--dusk);line-height:1.5}
+.note-meta{font-size:11px;color:var(--muted);margin-top:3px}
+.note-del{background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;padding:2px 4px;border-radius:4px;transition:color .15s;flex-shrink:0}
+.note-del:hover{color:var(--terra)}
+.note-empty{font-size:13px;color:var(--muted);text-align:center;padding:2rem 0}
+.divider{height:1px;background:var(--bd);margin:1.5rem 0}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eye">TPE → LAX → LAS VEGAS → COACHELLA → UNIVERSAL</div>
+  <h1>2027 美西完整行程 <span>✦</span></h1>
+  <div class="hero-sub">4/7–4/17 · 11 天 · 兩人 · Coachella W1 + Las Vegas + Universal Studios</div>
+</div>
+
+<div class="tabs-bar">
+  <div class="tabs">
+    <div class="tab active" onclick="go('itinerary')">📅 每日行程</div>
+    <div class="tab" onclick="go('stay')">🏨 住宿 & 交通</div>
+    <div class="tab" onclick="go('budget')">💰 預算</div>
+    <div class="tab" onclick="go('checklist')">✅ 待辦</div>
+    <div class="tab" onclick="go('notes')">📝 備註</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ===== ITINERARY ===== -->
+<div class="panel active" id="panel-itinerary">
+<div class="sec-label">完整每日行程</div>
+
+<!-- D1 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/7</div><div class="day-dow">三</div></div>
+    <div class="day-title-wrap"><div class="day-title">桃園出發 → 抵達洛杉磯 LAX</div><div class="day-subtitle">直飛約 12 小時｜時差 +15 小時</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-travel">飛行日</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">台灣 AM</div><div class="sched-text">桃園機場出發（建議選早班或午班飛機）</div></div>
+      <div class="sched-item"><div class="sched-time">LAX 下午</div><div class="sched-text">抵達 LAX，出關、提領行李、搭接駁到租車中心取車</div></div>
+      <div class="sched-item"><div class="sched-time">PM 3–4</div><div class="sched-text">🌊 Santa Monica Pier — 吹海風、看海景、適應時差</div></div>
+      <div class="sched-item"><div class="sched-time">PM 5–6</div><div class="sched-text">🏖️ Venice Beach 漫步，感受加州氛圍</div></div>
+      <div class="sched-item"><div class="sched-time">晚餐</div><div class="sched-text">Santa Monica 附近吃晚餐（推薦 Back on the Beach Café 或 Cha Cha Chicken）</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 提醒：</strong>出關後找紫色「Rental Car Shuttle」牌搭接駁；LAX 入境排隊可能需 45–90 分鐘，有心理準備</div>
+  </div>
+</div>
+
+<!-- D2 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/8</div><div class="day-dow">四</div></div>
+    <div class="day-title-wrap"><div class="day-title">洛杉磯市區探索</div><div class="day-subtitle">Hollywood + 市區經典景點</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-travel">LA 第1天</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">AM 10</div><div class="sched-text">🔭 Griffith Observatory — 免費入場，可看到 Hollywood Sign 和整個 LA 全景</div><div class="sched-note">⚠️ 週一公休，提前確認開放日</div></div>
+      <div class="sched-item"><div class="sched-time">PM 1</div><div class="sched-text">🌟 Hollywood Walk of Fame — 逛星光大道、拍照打卡</div></div>
+      <div class="sched-item"><div class="sched-time">PM 3</div><div class="sched-text">☕ Hollywood & Highland 商場逛逛，休息一下</div></div>
+      <div class="sched-item"><div class="sched-time">PM 5</div><div class="sched-text">🛍️ Beverly Hills / Rodeo Drive — 走逛精品街，感受 LA 奢靡氣息</div></div>
+      <div class="sched-item"><div class="sched-time">PM 7</div><div class="sched-text">🍜 Grand Central Market（Downtown LA）晚餐，多國料理、氣氛熱鬧</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 提醒：</strong>Griffith Observatory 停車位有限，建議搭 DASH Observatory 巴士上山，或早點出發佔位</div>
+  </div>
+</div>
+
+<!-- D3 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/9</div><div class="day-dow">五</div></div>
+    <div class="day-title-wrap"><div class="day-title">開車前往 Palm Desert + Coachella Day 1</div><div class="day-subtitle">LAX → Palm Desert 約 2–2.5 小時</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-fest">Coachella 第1天</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">AM 10</div><div class="sched-text">退房，開車出發前往 Palm Desert（走 I-10 E）</div></div>
+      <div class="sched-item"><div class="sched-time">途中</div><div class="sched-text">🛍️ Desert Hills Premium Outlets（Cabazon）— 就在 I-10 旁，順道逛 1–2 小時</div></div>
+      <div class="sched-item"><div class="sched-time">PM 1–2</div><div class="sched-text">抵達 Holiday Inn Express Palm Desert，辦理 Check-in，放好行李</div></div>
+      <div class="sched-item"><div class="sched-time">PM 2</div><div class="sched-text">🚌 搭 Shuttle 前往 Coachella 場地（去程尖峰 2–5pm，建議 2 點出發）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 3</div><div class="sched-text">🎨 進場！先逛藝術裝置、吃東西，摩天輪搭起來</div></div>
+      <div class="sched-item"><div class="sched-time">PM 9–1am</div><div class="sched-text">🎵 各舞台大小卡司輪番上陣，跟著感覺走！</div></div>
+      <div class="sched-item"><div class="sched-time">凌晨 1</div><div class="sched-text">🚌 搭 Shuttle 回飯店（預留 30–60 分鐘排隊）</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 Coachella 攜帶清單：</strong>行動電源（20000mAh）、防曬乳（非噴霧）、帽子、墨鏡、輕薄外套、補水包、雙肩包（18"×13"×8.5" 以內）、信用卡（場內無現金）</div>
+  </div>
+</div>
+
+<!-- D4 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/10</div><div class="day-dow">六</div></div>
+    <div class="day-title-wrap"><div class="day-title">Coachella Day 2 + Palm Springs 纜車</div><div class="day-subtitle">白天出遊，晚上回場地衝大卡司</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-fest">Coachella 第2天</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">AM 10</div><div class="sched-text">🚡 Palm Springs Aerial Tramway — 10 分鐘纜車上山，山頂涼爽（約 15°C），俯瞰整個沙漠</div></div>
+      <div class="sched-item"><div class="sched-time">PM 12</div><div class="sched-text">山下午餐，回飯店小休或游泳池放鬆</div></div>
+      <div class="sched-item"><div class="sched-time">PM 2</div><div class="sched-text">🚌 搭 Shuttle 再度進場，趁人少先佔好位置</div></div>
+      <div class="sched-item"><div class="sched-time">PM 3–8</div><div class="sched-text">🎵 下午場各舞台演出，逛 Do Lab、Sahara Tent 電音區</div></div>
+      <div class="sched-item"><div class="sched-time">PM 9–1am</div><div class="sched-text">🎵 Saturday Headliner 登場，全力衝！</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 提醒：</strong>纜車週六熱門，建議一早就去；場內 9pm 後最精彩，可以 2pm 才出發；回程尖峰凌晨 12–2:30，提前離場或晚一點再走都可以避開人潮</div>
+  </div>
+</div>
+
+<!-- D5 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/11</div><div class="day-dow">日</div></div>
+    <div class="day-title-wrap"><div class="day-title">Coachella Day 3（最終日）</div><div class="day-subtitle">週日壓軸 Headliner，最燃的一夜</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-fest">Coachella 第3天</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">早上</div><div class="sched-text">🏊 飯店游泳池懶懶曬太陽，儲存體力</div></div>
+      <div class="sched-item"><div class="sched-time">PM 12</div><div class="sched-text">🌊 Palm Springs Surf Club（Coachella 期間有白天派對 + 人工衝浪池）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 2:30</div><div class="sched-text">🚌 搭 Shuttle 最後一次進場</div></div>
+      <div class="sched-item"><div class="sched-time">PM 3–9</div><div class="sched-text">🎵 拍最後的藝術裝置、回顧最喜歡的舞台</div></div>
+      <div class="sched-item"><div class="sched-time">PM 9–midnight</div><div class="sched-text">🎵 週日壓軸 Headliner！最後一擊，全力感受</div></div>
+      <div class="sched-item"><div class="sched-time">深夜</div><div class="sched-text">🚌 搭 Shuttle 回飯店（週日宵禁 12am，Shuttle 服務到 1am 左右）</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 最後一天記得：</strong>手機多拍一些！帶一個小備用袋裝紀念品；週日回程人較少，Shuttle 等待時間通常比前兩晚短</div>
+  </div>
+</div>
+
+<!-- D6 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/12</div><div class="day-dow">一</div></div>
+    <div class="day-title-wrap"><div class="day-title">Coachella 結束 → 開車直奔 Las Vegas</div><div class="day-subtitle">Indio → Las Vegas 約 2.5 小時</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-vegas">Vegas 第1天</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">AM 10</div><div class="sched-text">飯店 Check-out，整理行李，正式說再見 Coachella 🏜️</div></div>
+      <div class="sched-item"><div class="sched-time">AM 10:30</div><div class="sched-text">🚗 開車出發前往 Las Vegas（走 I-10 → I-15 N，約 240 英里）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 1</div><div class="sched-text">抵達 Las Vegas！Check-in 飯店（Strip 上的大飯店）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 2</div><div class="sched-text">📸 Welcome to Las Vegas 標誌拍照（在 Strip 最南端）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 3</div><div class="sched-text">🎰 Walk the Strip — Bellagio → Caesars Palace → The Venetian → LINQ</div></div>
+      <div class="sched-item"><div class="sched-time">PM 5</div><div class="sched-text">🎡 High Roller 摩天輪（550 英尺高，360 度俯瞰 Strip，夕陽時段最美）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 7</div><div class="sched-text">🍽️ Strip 上晚餐（推薦 The Wicked Spoon 自助 Buffet 或 In-N-Out 漢堡）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 9</div><div class="sched-text">⛲ Bellagio 噴泉秀（夜晚每 15 分鐘一場，免費觀看，超震撼）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 10+</div><div class="sched-text">🌙 Fremont Street Experience（Old Vegas，LED 天幕燈光秀，每小時一場）</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 Vegas 住宿建議：</strong>Strip 中段飯店（Caesars / MGM / Bellagio 附近）最方便；週一平日價格約 $80–150/晚，另加 Resort Fee $40–50</div>
+  </div>
+</div>
+
+<!-- D7 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/13</div><div class="day-dow">二</div></div>
+    <div class="day-title-wrap"><div class="day-title">Las Vegas 深度玩 → 返回洛杉磯</div><div class="day-subtitle">Vegas → LA 約 4 小時</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-vegas">Vegas 第2天</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">AM 9</div><div class="sched-text">🏨 Bellagio 大廳 — 免費參觀 Fiori di Como 玻璃天花板 + 溫室花園</div></div>
+      <div class="sched-item"><div class="sched-time">AM 10</div><div class="sched-text">🌐 The Sphere 外觀（世界最大球形建築，LED 外牆每天變化）</div></div>
+      <div class="sched-item"><div class="sched-time">AM 11</div><div class="sched-text">🎰 The Venetian — 室內仿威尼斯街道 + Grand Canal Shoppes 逛逛</div></div>
+      <div class="sched-item"><div class="sched-time">PM 12</div><div class="sched-text">🍔 午餐：In-N-Out Burger 或 Wicked Spoon Buffet</div></div>
+      <div class="sched-item"><div class="sched-time">PM 1:30</div><div class="sched-text">🚗 Check-out，開車返回洛杉磯（走 I-15 S，避開下午 3–6pm 塞車高峰）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 5:30</div><div class="sched-text">抵達 LA，El Royale Hotel Check-in（Universal Studios 步行可達）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 7</div><div class="sched-text">🍜 附近吃晚餐，早點休息，明天環球全天！</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 開車注意：</strong>週二中午出發是最好時機，I-15 回 LA 週五最塞，週二幾乎暢通無阻</div>
+  </div>
+</div>
+
+<!-- D8 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/14</div><div class="day-dow">三</div></div>
+    <div class="day-title-wrap"><div class="day-title">🎢 Universal Studios Hollywood 全天</div><div class="day-subtitle">步行即可從飯店抵達</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-uni">環球影城</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">AM 9</div><div class="sched-text">🍄 開園！衝 Super Nintendo World（人少時先玩，排隊最長）</div></div>
+      <div class="sched-item"><div class="sched-time">AM 10:30</div><div class="sched-text">⚡ Harry Potter — Hogwarts Castle 魔杖互動 + 雲霄飛車</div></div>
+      <div class="sched-item"><div class="sched-time">PM 12</div><div class="sched-text">🌭 Springfield（辛普森）吃 Krusty Burger + 甜甜圈</div></div>
+      <div class="sched-item"><div class="sched-time">PM 1:30</div><div class="sched-text">🎬 Studio Tour — 坐車穿越真實拍攝片場（約 60 分鐘）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 3</div><div class="sched-text">🎢 The Mummy Returns、Jurassic World 等其他設施</div></div>
+      <div class="sched-item"><div class="sched-time">PM 5:30</div><div class="sched-text">🦅 Jurassic Park — 走走水上設施（沙漠三天之後來玩水剛好！）</div></div>
+      <div class="sched-item"><div class="sched-time">PM 7</div><div class="sched-text">回飯店，好好洗澡休息</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 門票建議：</strong>提前在官網購買，現場票貴 $20–30；Super Nintendo World 需要另外搶入場時段（在 App 預約），早上 9 點開園一定要先去</div>
+  </div>
+</div>
+
+<!-- D9 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/15</div><div class="day-dow">四</div></div>
+    <div class="day-title-wrap"><div class="day-title">The Getty 美術館 + 輕鬆購物</div><div class="day-subtitle">LA 最後一整天，慢慢逛</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-travel">LA 最終日</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">AM 10</div><div class="sched-text">🎨 The Getty Center — 世界級美術館，入場免費（停車 $25）。建築本身 + 城市景觀就值得來</div></div>
+      <div class="sched-item"><div class="sched-time">PM 1</div><div class="sched-text">🛍️ Third Street Promenade（Santa Monica）— 露天購物街，逛街買伴手禮</div></div>
+      <div class="sched-item"><div class="sched-time">PM 3</div><div class="sched-text">🌊 Santa Monica Pier — 再看一次太平洋，跟 LA 好好道別</div></div>
+      <div class="sched-item"><div class="sched-time">PM 5:30</div><div class="sched-text">🍽️ 行程最後一頓好好吃！推薦 Nobu Malibu 或 Catch LA</div></div>
+      <div class="sched-item"><div class="sched-time">PM 8</div><div class="sched-text">回飯店收行李、整理、準備明天還車</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- D10 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-date"><div class="day-num">4/16</div><div class="day-dow">五</div></div>
+    <div class="day-title-wrap"><div class="day-title">還車 → LAX → 搭機返台</div><div class="day-subtitle">直飛桃園，約 12 小時</div></div>
+    <div class="day-badge-wrap"><span class="badge badge-travel">返程日</span></div>
+  </div>
+  <div class="day-body">
+    <div class="schedule">
+      <div class="sched-item"><div class="sched-time">早上</div><div class="sched-text">退房，加滿油，把車開回 LAX 租車中心還車</div></div>
+      <div class="sched-item"><div class="sched-time">出發前 3h</div><div class="sched-text">抵達 LAX，辦理報到 + 行李托運</div></div>
+      <div class="sched-item"><div class="sched-time">起飛</div><div class="sched-text">✈️ LAX → TPE 直飛返台，約 12 小時後抵達桃園</div></div>
+      <div class="sched-item"><div class="sched-time">4/17 傍晚</div><div class="sched-text">🏠 抵達桃園機場，帶著滿滿回憶回家！</div></div>
+    </div>
+    <div class="tip-box"><strong>💡 還車注意：</strong>還車前附近加滿油（LAX 周邊加油站很多）；LAX 週五早上很塞，建議預留充裕時間；行李不要超重，從 Outlet 和 Vegas 買的東西記得分配好</div>
+  </div>
+</div>
+
+</div>
+
+<!-- ===== STAY ===== -->
+<div class="panel" id="panel-stay">
+<div class="sec-label">住宿安排</div>
+<div class="card-grid">
+  <div class="card">
+    <div class="card-eye">4/7–9（2晚）LA 前段</div>
+    <div class="card-title">Best Western Hollywood Plaza</div>
+    <div class="card-desc">Hollywood Blvd 步行 5 分鐘；有停車場；評分 4.0</div>
+    <div class="card-price">~$120–160 / 晚</div>
+  </div>
+  <div class="card">
+    <div class="card-eye">4/9–12（3晚）Coachella</div>
+    <div class="card-title">Holiday Inn Express Palm Desert</div>
+    <div class="card-desc">已含於 Hotel Bundle（GA 票 ×2 + Shuttle Pass ×2）</div>
+    <div class="card-price ok">✓ 已含於 $3,601 訂單</div>
+  </div>
+  <div class="card">
+    <div class="card-eye">4/12–13（1晚）Las Vegas</div>
+    <div class="card-title">Strip 中段大飯店</div>
+    <div class="card-desc">Caesars / MGM / Venetian 附近，週一平日價格很划算</div>
+    <div class="card-price">~$80–150 / 晚（+Resort Fee $40–50）</div>
+  </div>
+  <div class="card">
+    <div class="card-eye">4/13–16（3晚）LA 後段</div>
+    <div class="card-title">El Royale Hotel（Studio City）</div>
+    <div class="card-desc">步行可達 Universal Studios；免費停車；含早餐；評分 4.5</div>
+    <div class="card-price">~$130–170 / 晚</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="sec-label">駕駛路線</div>
+<div class="card" style="margin-bottom:12px">
+  <div class="card-title" style="margin-bottom:8px">公路旅行路線概覽</div>
+  <div class="schedule">
+    <div class="sched-item"><div class="sched-time">4/7</div><div class="sched-text">LAX 取車 → Best Western Hollywood（開車 30 分鐘）</div></div>
+    <div class="sched-item"><div class="sched-time">4/9</div><div class="sched-text">Hollywood → Palm Desert（I-10 E，約 2–2.5h）途中可逛 Desert Hills Outlets</div></div>
+    <div class="sched-item"><div class="sched-time">4/12</div><div class="sched-text">Palm Desert（Indio）→ Las Vegas（I-10→I-15 N，約 2.5h）</div></div>
+    <div class="sched-item"><div class="sched-time">4/13</div><div class="sched-text">Las Vegas → LA（I-15 S，約 4h）建議中午出發避開塞車</div></div>
+    <div class="sched-item"><div class="sched-time">4/16</div><div class="sched-text">El Royale → LAX 還車（約 20 分鐘）</div></div>
+  </div>
+  <div class="tip-box" style="margin-top:10px"><strong>🚗 租車：</strong>LAX 取還，Economy 或 Compact，選無限里程方案，Enterprise 或 Budget。兩人共約 9 天全程 ~$350–500</div>
+</div>
+
+<div class="divider"></div>
+<div class="sec-label">加州開車重點</div>
+<div class="card">
+  <div class="schedule">
+    <div class="sched-item"><div class="sched-time">證件</div><div class="sched-text">台灣駕照 + 國際駕照（兩份都要帶）</div></div>
+    <div class="sched-item"><div class="sched-time">規則</div><div class="sched-text">4-Way Stop：先到先走，同時到讓右邊先行</div></div>
+    <div class="sched-item"><div class="sched-time">停車</div><div class="sched-text">路邊看路牌顏色：紅=禁停、黃=上下貨、綠=限時</div></div>
+    <div class="sched-item"><div class="sched-time">安全</div><div class="sched-text">東西絕對不留車內！LA 和 Vegas 砸車竊盜都很猖獗</div></div>
+    <div class="sched-item"><div class="sched-time">導航</div><div class="sched-text">Waze 最好用（LA 躲塞車神器）</div></div>
+    <div class="sched-item"><div class="sched-time">加油</div><div class="sched-text">自助加油，刷卡輸入 Zip Code，還車前加滿油</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ===== BUDGET ===== -->
+<div class="panel" id="panel-budget">
+<div class="sec-label">兩人預算（USD）</div>
+<div class="budget-wrap">
+  <div class="b-row"><span class="b-label">Coachella Hotel Bundle（已付首期）</span><span class="b-val">$3,601</span></div>
+  <div class="b-row"><span class="b-label">來回機票 ×2（直飛 TPE↔LAX）</span><span class="b-val">~$1,600–2,400</span></div>
+  <div class="b-row"><span class="b-label">LA 前段住宿 Best Western（2晚）</span><span class="b-val">~$240–320</span></div>
+  <div class="b-row"><span class="b-label">Las Vegas 住宿 Strip 飯店（1晚）</span><span class="b-val">~$120–200</span></div>
+  <div class="b-row"><span class="b-label">LA 後段住宿 El Royale（3晚）</span><span class="b-val">~$390–510</span></div>
+  <div class="b-row"><span class="b-label">租車（約 9 天，無限里程）</span><span class="b-val">~$350–500</span></div>
+  <div class="b-row"><span class="b-label">Universal Studios 門票 ×2</span><span class="b-val">~$200–280</span></div>
+  <div class="b-row"><span class="b-label">High Roller 摩天輪 ×2</span><span class="b-val">~$60–80</span></div>
+  <div class="b-row"><span class="b-label">Palm Springs 纜車 ×2</span><span class="b-val">~$70–80</span></div>
+  <div class="b-row"><span class="b-label">餐飲 + 場內消費 + 其他</span><span class="b-val">~$600–900</span></div>
+  <div class="b-total">
+    <div class="b-total-label">兩人合計</div>
+    <div class="b-total-num">~$7,200–8,900</div>
+  </div>
+  <div class="b-note">每人約 $3,600–4,450（約 NT$115,000–140,000）</div>
+</div>
+
+<div class="sec-label">Coachella 分期付款進度</div>
+<div class="budget-wrap">
+  <div class="b-row"><span class="b-label">✅ 第 1 期（已付）</span><span class="b-val" style="color:#7A9E7E">$600.26</span></div>
+  <div class="b-row"><span class="b-label">第 2 期 — 2026/05/20</span><span class="b-val">$600.26</span></div>
+  <div class="b-row"><span class="b-label">第 3 期 — 2026/06/20</span><span class="b-val">$600.26</span></div>
+  <div class="b-row"><span class="b-label">第 4 期 — 2026/07/20</span><span class="b-val">$600.25</span></div>
+  <div class="b-row"><span class="b-label">第 5 期 — 2026/08/20</span><span class="b-val">$600.23</span></div>
+  <div class="b-row"><span class="b-label">第 6 期 — 2026/09/20</span><span class="b-val">~$600</span></div>
+  <div style="margin-top:.75rem;font-size:12px;color:var(--muted)">⚠️ 每月 20 日自動扣款，請確保信用卡額度充足</div>
+</div>
+</div>
+
+<!-- ===== CHECKLIST ===== -->
+<div class="panel" id="panel-checklist">
+<div class="sec-label">待辦清單</div>
+<div class="check-progress"><div class="check-bar" id="cbar" style="width:0%"></div></div>
+<div id="cprog" style="font-size:12px;color:var(--muted);margin-bottom:1.25rem"></div>
+
+<div class="check-section">
+  <div class="check-sec-title">🎫 已完成</div>
+  <div class="check-item" onclick="tc(this)" data-id="c1"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">Coachella W1 GA 門票 ×2（已訂）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c2"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">Holiday Inn Express Hotel Bundle（已付首期 $600.26）</div></div>
+</div>
+
+<div class="check-section">
+  <div class="check-sec-title">🚨 最優先（現在就辦）</div>
+  <div class="check-item" onclick="tc(this)" data-id="c3"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">申請 ESTA（esta.cbp.dhs.gov，費用 $40/人，兩人共 $80）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c4"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">確認國際駕照效期（需到 2027 年 4 月後仍有效）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c5"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">確認信用卡附帶租車險（Visa/Mastercard 多數有）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c6"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">聯繫 100x Hospitality 確認手環取件方式（建議選 Will Call）</div></div>
+</div>
+
+<div class="check-section">
+  <div class="check-sec-title">✈️ 2026 年 6–10 月（訂票期）</div>
+  <div class="check-item" onclick="tc(this)" data-id="c7"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">訂來回機票（TPE→LAX 直飛，長榮/中華/星宇）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c8"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">訂 LA 前段住宿 — Best Western Hollywood Plaza（4/7–9）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c9"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">訂 Las Vegas 住宿 — Strip 中段飯店（4/12–13）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c10"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">訂 LA 後段住宿 — El Royale Hotel（4/13–16）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c11"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">預訂租車（LAX 取還，9 天，無限里程，Enterprise 或 Budget）</div></div>
+</div>
+
+<div class="check-section">
+  <div class="check-sec-title">🎢 出發前準備</div>
+  <div class="check-item" onclick="tc(this)" data-id="c12"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">購買 Universal Studios Hollywood 門票（提前買）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c13"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">High Roller 摩天輪票（可提前在官網購買省錢）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c14"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">安裝 Coachella 官方 App（手環綁定必須）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c15"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">安裝 Waze + 下載加州、Nevada 離線地圖</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c16"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">購買美國 eSIM 或 SIM（推薦 T-Mobile 或 AT&T 方案）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c17"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">準備 Coachella 裝備（防曬乳/帽子/外套/行動電源/後背包）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c18"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">每月確認 20 日 Coachella 分期扣款正常（共 6 期到 9 月）</div></div>
+  <div class="check-item" onclick="tc(this)" data-id="c19"><div class="c-box"><span class="c-tick">✓</span></div><div class="c-text">換好美金現金（建議兩人共 $500–600，主要用於小費和現金消費）</div></div>
+</div>
+</div>
+
+<!-- ===== NOTES ===== -->
+<div class="panel" id="panel-notes">
+<div class="sec-label">共同備註</div>
+<div class="note-add">
+  <input class="note-input" id="ninput" placeholder="新增備註、討論事項、餐廳推薦…" />
+  <button class="note-btn" onclick="addNote()">新增</button>
+</div>
+<div class="note-list" id="nlist">
+  <div class="note-empty" id="nempty">還沒有備註，快來新增吧！</div>
+</div>
+</div>
+
+</div><!-- end main -->
+
+<script>
+const SK='c2027_v2';
+function ld(){try{const r=localStorage.getItem(SK);return r?JSON.parse(r):{checks:{c1:true,c2:true},notes:[]}}catch(e){return{checks:{c1:true,c2:true},notes:[]}}}
+function sv(d){try{localStorage.setItem(SK,JSON.stringify(d))}catch(e){}}
+let D=ld();
+
+function go(id){
+  const ids=['itinerary','stay','budget','checklist','notes'];
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',ids[i]===id));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+id));
+}
+
+function ac(item,checked){
+  item.querySelector('.c-box').classList.toggle('checked',checked);
+  item.querySelector('.c-text').classList.toggle('done',checked);
+}
+function tc(item){
+  const id=item.dataset.id;
+  const was=item.querySelector('.c-box').classList.contains('checked');
+  ac(item,!was);D.checks[id]=!was;sv(D);up();
+}
+function up(){
+  const items=document.querySelectorAll('.check-item');
+  let done=0;
+  items.forEach(i=>{if(i.querySelector('.c-box').classList.contains('checked'))done++;});
+  const t=items.length,p=t?Math.round(done/t*100):0;
+  document.getElementById('cbar').style.width=p+'%';
+  document.getElementById('cprog').textContent='已完成 '+done+' / '+t+' 項（'+p+'%）';
+}
+function initCL(){
+  document.querySelectorAll('.check-item').forEach(i=>ac(i,!!D.checks[i.dataset.id]));
+  up();
+}
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function renderNotes(){
+  const list=document.getElementById('nlist'),empty=document.getElementById('nempty');
+  const notes=D.notes||[];
+  empty.style.display=notes.length===0?'block':'none';
+  list.querySelectorAll('.note-card').forEach(e=>e.remove());
+  notes.slice().reverse().forEach((n,ri)=>{
+    const idx=notes.length-1-ri;
+    const c=document.createElement('div');c.className='note-card';
+    c.innerHTML='<div class="note-body"><div class="note-text">'+esc(n.text)+'</div><div class="note-meta">'+n.time+'</div></div><button class="note-del" onclick="delNote('+idx+')">×</button>';
+    list.appendChild(c);
+  });
+}
+function addNote(){
+  const inp=document.getElementById('ninput');const text=inp.value.trim();if(!text)return;
+  const now=new Date();
+  const time=now.toLocaleDateString('zh-TW')+' '+now.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});
+  D.notes=D.notes||[];D.notes.push({text,time});sv(D);inp.value='';renderNotes();
+}
+function delNote(i){D.notes.splice(i,1);sv(D);renderNotes();}
+document.getElementById('ninput').addEventListener('keydown',e=>{if(e.key==='Enter')addNote();});
+
+initCL();renderNotes();
+</script>
+</body>
+</html>
